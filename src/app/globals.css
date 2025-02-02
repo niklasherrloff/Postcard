@@ -209,7 +209,14 @@ footer {
 }
 
 .buttom-div {
+  padding: 30px;
   display: flex; /* Enables flexbox */
   align-items: flex-end; /* Aligns items to the bottom */
   gap: 1rem; /* 16px space between flex items */
+}
+
+.error-list {
+  list-style-type: disc; /* Bullet points */
+  list-style-position: inside; /* Bullets inside the list item */
+  margin-left: 1rem; /* 4 (Tailwind) = 1rem (16px) */
 }

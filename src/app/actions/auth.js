@@ -1,17 +1,29 @@
 "use server";
 
+import { RegisterFormSchema } from "@/lib/rules";
+
 export async function register(state, formData) {
   console.log("register action called");
 
-  await new Promise((resolve) =>
-    setTimeout(resolve, 500)
-  ); /** Niklas, delete later, just testing */
+  //   await new Promise((resolve) =>
+  //     setTimeout(resolve, 500)
+  //   ); /** Niklas, delete later, just testing */
 
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const confirmPassword = formData.get("confirmPassword");
+  const validatedFields = RegisterFormSchema.safeParse({
+    email: formData.get("email"),
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword"),
+  });
 
-  console.log(email);
-  console.log(password);
-  console.log(confirmPassword);
+  console.log(validatedFields);
+
+  if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors);
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      email: formData.get("email"),
+    };
+  }
+
+  console.log(validatedFields);
 }
