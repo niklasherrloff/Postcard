@@ -1,10 +1,19 @@
+"use client";
+
+import { useActionState } from "react";
+import { register } from "../actions/auth";
 import Link from "next/link";
 
 export default function Register() {
+  console.clear();
+  const [state, action, isPending] = useActionState(register, undefined);
+
+  console.log(isPending);
+
   return (
     <div className="container">
       <h1 className="title">Register</h1>
-      <form action="" className="register-form">
+      <form action={action} className="register-form">
         <div>
           <label htmlFor="email">Email</label>
           <input type="text" name="email" />
@@ -18,8 +27,12 @@ export default function Register() {
           <input type="password" name="confirmPassword" />
         </div>
         <div className="buttom-div">
-          <button className="btn-primary">Register</button>
-          <Link href="/" className="text-link"></Link>
+          <button disabled={isPending} className="btn-primary">
+            {isPending ? "Loading..." : "Register"}
+          </button>
+          <Link href="/" className="text-link">
+            or login here
+          </Link>
         </div>
       </form>
     </div>
