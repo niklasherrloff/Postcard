@@ -118,6 +118,10 @@ footer {
   margin: 0 auto;
 }
 
+.container {
+  width: 50%; /* chatGPt w-1/2 */
+}
+
 .btn-primary {
   color: white;
   background-color: #4f46e5;
@@ -198,4 +202,14 @@ footer {
 .round-btn:focus {
   outline: 2px solid #e2e8f0;
   outline-offset: 2px;
+}
+
+.register-form {
+  margin-top: 1rem; /* 16px */ /* chatGPt space-y-4 */
+}
+
+.buttom-div {
+  display: flex; /* Enables flexbox */
+  align-items: flex-end; /* Aligns items to the bottom */
+  gap: 1rem; /* 16px space between flex items */
 }
